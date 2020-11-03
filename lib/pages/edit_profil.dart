@@ -108,9 +108,11 @@ class _EditProfileState extends State<EditProfile> {
                   .stretch, //memenuhi layar kanan kiri suatu widget
               children: [
                 Container(
-                  child: Text(
-                    'EDIT PROFIL',
-                    style: TextStyle(fontSize: 40, color: Colors.blueAccent),
+                  child: Center(
+                    child: Text(
+                      'EDIT PROFIL',
+                      style: TextStyle(fontSize: 40, color: Colors.blueAccent),
+                    ),
                   ),
                 ),
                 Container(
@@ -132,10 +134,13 @@ class _EditProfileState extends State<EditProfile> {
                         // showSnackBar('Please input your name!');
                         showAlertDialogCupertino('Please input your name!');
                       } else {
+                        // Berpindah halaman ketika di text field memiliki value ke Profile()
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Profile())
-                        ); // Berpindah halaman ketika di text field memiliki value ke Profile()
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Profile(
+                                      name: nameController.text,
+                                    )));
                       }
                     },
                     child: Text('Update',
