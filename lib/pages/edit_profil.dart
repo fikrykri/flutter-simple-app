@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
+import 'profile.dart';
 
 class EditProfile extends StatefulWidget {
   @override
@@ -130,6 +131,11 @@ class _EditProfileState extends State<EditProfile> {
                         // showToast('Please input your name!');
                         // showSnackBar('Please input your name!');
                         showAlertDialogCupertino('Please input your name!');
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Profile())
+                        ); // Berpindah halaman ketika di text field memiliki value ke Profile()
                       }
                     },
                     child: Text('Update',
