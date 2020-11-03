@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/cupertino.dart';
 
 class EditProfile extends StatefulWidget {
   @override
@@ -35,32 +36,62 @@ class _EditProfileState extends State<EditProfile> {
     globalKey.currentState.showSnackBar(snackbar);
   }
 
-  // penggunaan notifikasi alert dialog
+  // penggunaan notifikasi alert dialog material desain
   showAlertDialogMaterial(text) {
     showDialog(
-      context: globalKey.currentContext,
-      builder: (_) => AlertDialog(
-        title: Text('Info'),
-        content: Text(text),
-        actions: [
-          FlatButton(
-            onPressed: () {
-              Navigator.pop(globalKey.currentContext); // pop = kembali ke menu awal
-              print('Clicked No');
-            }, 
-            child: Text('No')),
-          FlatButton(
-            onPressed: () {
-              print('Clicked Yes')   ;
-            }, 
-            child: Text('Yes'))
-        ],
-        elevation: 5, // menampilkan bayangan di setiap sisi  widget
-        backgroundColor: Colors.grey,
-      ),
-      barrierColor: Colors.black.withOpacity(0.5),
-      barrierDismissible: false // pada saat klik sembarang alert dialog tidak akan tertutup
-    );
+        context: globalKey.currentContext,
+        builder: (_) => AlertDialog(
+              title: Text('Info'),
+              content: Text(text),
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      Navigator.pop(globalKey
+                          .currentContext); // pop = kembali ke menu awal
+                      print('Clicked No');
+                    },
+                    child: Text('No')),
+                FlatButton(
+                    onPressed: () {
+                      print('Clicked Yes');
+                    },
+                    child: Text('Yes'))
+              ],
+              elevation: 5, // menampilkan bayangan di setiap sisi  widget
+              backgroundColor: Colors.white,
+            ),
+        barrierColor: Colors.black.withOpacity(0.8),
+        barrierDismissible:
+            false // pada saat klik sembarang alert dialog tidak akan tertutup
+        );
+  }
+
+  // penggunaan notifikasi alert dialog capertino
+  showAlertDialogCupertino(text) {
+    showDialog(
+        context: globalKey.currentContext,
+        builder: (_) => CupertinoAlertDialog(
+              title: Text('Info'),
+              content: Text(text),
+              actions: [
+                CupertinoDialogAction(
+                    onPressed: () {
+                      Navigator.pop(globalKey
+                          .currentContext); // pop = kembali ke menu awal
+                      print('Clicked No');
+                    },
+                    child: Text('No')),
+                CupertinoDialogAction(
+                    onPressed: () {
+                      print('Clicked Yes');
+                    },
+                    child: Text('Yes'))
+              ],
+            ),
+        barrierColor: Colors.black.withOpacity(0.8),
+        barrierDismissible:
+            false // pada saat klik sembarang alert dialog tidak akan tertutup
+        );
   }
 
   @override
@@ -98,7 +129,7 @@ class _EditProfileState extends State<EditProfile> {
                       if (nameController.text == '') {
                         // showToast('Please input your name!');
                         // showSnackBar('Please input your name!');
-                        showAlertDialogMaterial('Please input your name!');
+                        showAlertDialogCupertino('Please input your name!');
                       }
                     },
                     child: Text('Update',
