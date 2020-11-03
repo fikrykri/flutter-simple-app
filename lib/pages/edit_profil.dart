@@ -1,3 +1,4 @@
+import 'package:aplikasi_navigation_mobprog2/customs/custom_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
@@ -125,9 +126,8 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 Container(
-                  height: 48,
-                  child: FlatButton(
-                    color: Colors.blueAccent,
+                  child: CustomButton(
+                    text: 'Update',
                     onPressed: () {
                       if (nameController.text == '') {
                         // showToast('Please input your name!');
@@ -143,12 +143,8 @@ class _EditProfileState extends State<EditProfile> {
                                     )));
                       }
                     },
-                    child: Text('Update',
-                        style: TextStyle(color: Colors.white, fontSize: 14)),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24)),
                   ),
-                )
+                ),
               ])),
     );
   }
